@@ -4,6 +4,8 @@ import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import { useState } from 'react';
 
+import MealsNavigator from './navigation/MealsNavigator';
+
 const fetchFonts = () => {
   return Font.loadAsync({
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
@@ -25,10 +27,7 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text>Working!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <MealsNavigator />
   );
 }
 
