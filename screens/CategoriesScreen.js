@@ -9,7 +9,12 @@ const CategoriesScreen = props => {
         return (
             <TouchableOpacity  
                 style={styles.gridItem} 
-                onPress={() => props.navigation.navigate({routeName: 'CategoryMeals'})}
+                onPress={() => {
+                    props.navigation.navigate({routeName: 'CategoryMeals',
+                params: {
+                    categoryId: itemData.item.id            
+                }})
+                }}
             >
                 <View>
                     <Text>{itemData.item.title}</Text>
@@ -19,7 +24,8 @@ const CategoriesScreen = props => {
     };
 
     return (
-        <FlatList 
+        <FlatList
+            keyExtractor={(item, index) => item.id} 
             data={CATEGORIES} 
             renderItem={renderGridItem} 
             numColumns={2}
