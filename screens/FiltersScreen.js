@@ -1,16 +1,53 @@
-import React from 'react';
+import React , { useState }from 'react';
 import { View, Text, StyleSheet, Switch } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+
 import HeaderButton from '../components/HeaderButton';
+import Colors from '../constants/Colors';
+
+const FilterSwitch = props => {
+    return (
+        <View style={styles.filterContainer}>
+                <Text>{props.label}</Text>
+                <Switch 
+                    value={props.state}
+                    trackColor={{true: Colors.primaryColor}}
+                    //thumbColor={Colors.secondaryColor} 
+                    onValueChange={props.onChange}
+                />
+            </View>
+    );
+};
 
 const FiltersScreen = props => {
+    const [isGlutenFree, setIsGlutenFree] = useState(false);
+    const [isLactoseFree, setIsLactoseFree] = useState(false);
+    const [isVegan, setIsVegan] = useState(false);
+    const [isVegetarian, setIsVegetarian] = useState(false);
+
     return (
         <View style={styles.screen}>
             <Text style={styles.title}>Available Filters / Restrictions</Text>
-            <View style={styles.filterContainer}>
-                <Text>Gluten-free</Text>
-                <Switch />
-            </View>
+            <FilterSwitch  
+                label='Gluten-free' 
+                state={isGlutenFree} 
+                onChange={newValue => setIsGlutenFree(newValue)}
+            />
+            <FilterSwitch  
+                label='Lactose-free' 
+                state={isLactoseFree} 
+                onChange={newValue => setIsLactoseFree(newValue)}
+            />
+            <FilterSwitch  
+                label='Vegan' 
+                state={isVegan} 
+                onChange={newValue => setIsVegan(newValue)}
+            />
+            <FilterSwitch  
+                label='Vegetarian' 
+                state={isVegetarian} 
+                onChange={newValue => setIsVegetarian(newValue)}
+            />
         </View>
     );
 }
@@ -42,7 +79,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        width: '80%'
+        width: '80%',
+        marginVertical: 10
     }
 })
 
