@@ -75,13 +75,20 @@ FiltersScreen.navigationOptions = (navData) => {
     return {
         headerTitle: 'Filter Meals',
         headerLeft: <HeaderButtons HeaderButtonComponent={HeaderButton}>
-                        <Item title='menu' iconName='ios-menu' onPress={() => {
+                        <Item 
+                            title='menu' 
+                            iconName='ios-menu' 
+                            onPress={() => {
                             navData.navigation.toggleDrawer();
                         }}/>
                     </HeaderButtons>,
         headerRight: <HeaderButtons HeaderButtonComponent={HeaderButton}>
-                        <Item title='menu' iconName='ios-save' onPress={
-                            navData.navigation.getParam('save')}/>
+                        <Item 
+                            title='menu' 
+                            iconName='ios-save' 
+                            onPress={
+                            navData.navigation.getParam('save')}
+                        />
                     </HeaderButtons>
                 };
 };
